@@ -91,3 +91,7 @@
 ### Validation
 - Conduct usability tests with chess enthusiasts to refine the interface.
 - Test game-saving features to confirm saved states match live games.
+
+## 9. Use Case Diagramm
+![Alt text](use_case_diagramm_02122024.png)
+
