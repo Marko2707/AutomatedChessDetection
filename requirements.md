@@ -79,8 +79,7 @@
 - **Frontend Team**: Design and build the user interface.
 
 ### Performance Goals
-- Process at least 500 images per batch within 48 hours during training.
-- Operate smoothly on devices with at least 2GB RAM.
+- (TBD)
 
 ## 8. Verification and Validation
 
