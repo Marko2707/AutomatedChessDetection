@@ -102,13 +102,15 @@
 ![Alt text](use_case_diagramm_02122024.png)
 
 ## Formale Use Case
-|Goal|User wants to get next move suggestion by taking a photo of the chessboard with the app.|
-|Primary actor|User|
-|Scope|Piece recognition with computer vision and next move suggestion.|
-|Level|User|
-|Precondition|User takes photo with camera through app.| 
-|Success end|Chess board is correctly detected and next move is suggested.|
-|Failure end condition|Photo cannot be analyzed.|
-|Trigger|User takes photo through app.|
+| Field                | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| Goal                | User wants to get the next move suggestion by taking a photo of the chessboard with the app. |
+| Primary Actor       | User                                                                        |
+| Scope               | Piece recognition with computer vision and next move suggestion.           |
+| Level               | User                                                                        |
+| Precondition        | User takes a photo with the camera through the app.                        |
+| Success End         | Chessboard is correctly detected, and the next move is suggested.          |
+| Failure End         | Photo cannot be analyzed.                                                  |
+| Trigger             | User takes a photo through the app.        
 
 
