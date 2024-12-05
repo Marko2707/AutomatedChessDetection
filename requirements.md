@@ -33,6 +33,13 @@
 - Include undo/redo functionality for move history.
 - Allow manual board state editing for corrections.
 
+### Simulation
+- Simulate standard 8x8 chessboards with accurate square dimensions and colors.
+- Support for various piece designs to ensure variety.
+- Simulate random or predefined board states, including opening, middle game, and endgame positions.
+- Implement varied lighting conditions.
+- Simulate camera views from different angles.
+
 ### Game Management
 - Save chess games with unique IDs.
 - Load previously saved games for review or continuation.
