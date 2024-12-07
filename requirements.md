@@ -111,6 +111,17 @@
 | Precondition        | User takes a photo with the camera through the app.                        |
 | Success End         | Chessboard is correctly detected, and the next move is suggested.          |
 | Failure End         | Photo cannot be analyzed.                                                  |
-| Trigger             | User takes a photo through the app.        
+| Trigger             | User takes a photo through the app.                                        |
+| Main success scenario | 1. User clicks on "take a photo" button                                  |
+|                        | 2. User takes a photo of a chessboard                                |
+|                        | 3. System detects the board, scans it, and displays it                |
+|                        | 4. User corrects any errors on the board and edits other details     |
+|                        | 5. User confirms the board                                               |
+|                        | 6. System suggests best next move                                        |
+| Extensions (error scenarios)|   3a. Board not detected                                            |
+|                        |System asks the user to retake the photo from a better angle             |
+| Variations (alternative scenarios)|   4. User confirms immediately                             
+
+
 
 
