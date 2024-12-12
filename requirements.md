@@ -2,53 +2,53 @@
 
 ## 1. General Requirements
 - Users can take a photo of a chessboard.
-- The system will recognize the board and piece positions from the photo.
-- Recognized positions will be converted into FEN (Forsyth-Edwards Notation).
-- FEN notation will be sent to a chess engine to suggest the best move.
-- Suggested moves and the board state will be displayed in a user-friendly interface.
+- The system shall recognize the board and piece positions from the photo.
+- Recognized positions shall be converted into FEN (Forsyth-Edwards Notation).
+- FEN notation shall be sent to a chess engine to suggest the best move.
+- Suggested moves and the board state shall be displayed in a user-friendly interface.
 - Chess games can be saved and loaded from a database.
-- The system will work on both Android and iOS.
+- The system shall work on both Android and iOS.
 
 ## 2. Functional Requirements
 
 ### Image Processing
-- Capture chessboard images using the device camera.
-- Detect the chessboard and pieces in the image.
-- Adjust for lighting conditions and camera angles for better accuracy.
+- User captures chessboard images using the device camera.
+- The application detects the chessboard and pieces in the image.
+- The application adjusts the picture from the user to match lighting conditions and camera angles for better accuracy.
 
 ### Chessboard and Piece Recognition
-- Identify standard chessboard patterns and dimensions.
-- Distinguish pieces by type (e.g., pawn, knight) and color (black or white).
+- The machine learning model shall identify standard chessboard patterns and dimensions.
+- The machine learning model shall distinguish pieces by type (e.g., pawn, knight) and color (black or white).
 
 ### FEN Conversion
-- Convert the recognized board state into valid FEN notation.
+- The application shall convert the recognized board state into valid FEN notation.
 
 ### Chess Engine Integration
-- Use the Stockfish engine to suggest the best moves based on FEN.
-- Support lighter engines for local processing if needed.
+- The application shall use the Stockfish engine to suggest the best moves based on FEN.
+- The application shall support lighter engines for local processing if needed.
 
 ### User Interface
-- Display the chessboard and recommended moves visually.
-- Highlight potential opponent moves after each user move.
-- Include undo/redo functionality for move history.
-- Allow manual board state editing for corrections.
+- The application shall display the chessboard and recommended moves visually.
+- The application shall highlight potential opponent moves after each user move.
+- The application shall include undo/redo functionality for move history.
+- The application shall allow manual board state editing for corrections.
 
 ### Simulation
-- Simulate standard 8x8 chessboards with accurate square dimensions and colors.
-- Support for various piece designs to ensure variety.
-- Simulate random or predefined board states, including opening, middle game, and endgame positions.
-- Implement varied lighting conditions.
-- Simulate camera views from different angles.
+- The application shall simulate standard 8x8 chessboards with accurate square dimensions and colors.
+- The application shall support for various piece designs to ensure variety.
+- The application shall simulate random or predefined board states, including opening, middle game, and endgame positions.
+- The application shall implement varied lighting conditions.
+- The application shall simulate camera views from different angles.
 
 ### Game Management
-- Save chess games with unique IDs.
-- Load previously saved games for review or continuation.
+- The application shall save chess games with unique IDs.
+- The application shall load previously saved games for review or continuation by request from the user.
 
 ## 3. Non-Functional Requirements
-- Achieve at least 90% image recognition accuracy.
-- Process images and provide recommendations in under 2 seconds.
-- Follow design guidelines for Android and iOS platforms.
-- Handle various chessboard and piece designs consistently.
+- The machine learning model shall achieve at least 90% image recognition accuracy after training.
+- The machine learning model shall process images and provide recommendations in under 2 seconds under optimal circumstances.
+- The application shall follow design guidelines for Android and iOS platforms.
+- The imagie recognition should handle various chessboard and piece designs consistently.
 
 ## 4. Data Requirements
 - Use annotated datasets, including Roboflow and user-created datasets.
@@ -58,13 +58,13 @@
 ## 5. User and System Interactions
 
 ### User Goals
-- Analyze chess games using board images.
-- Receive next-move suggestions and win probabilities.
-- Save, load, and review games easily.
+- User should analyze chess games using board images.
+- User should Receive next-move suggestions and win probabilities.
+- User should Save, load, and review games easily.
 
 ### System Operations
-- Analyze board images within 2 seconds.
-- Clearly display the best move and possible opponent responses.
+- The machine learning model should analyze board images within 2 seconds.
+- The application should clearly display the best move and possible opponent responses.
 
 ## 6. Challenges and Risk Mitigation
 
@@ -91,12 +91,12 @@
 ## 8. Verification and Validation
 
 ### Verification
-- Test recognition accuracy with a diverse set of chessboard images.
-- Ensure FEN notation is correct via chess engine compatibility checks.
+- The developers should test recognition accuracy with a diverse set of chessboard images.
+- The developers should ensure FEN notation is correct via chess engine compatibility checks.
 
 ### Validation
-- Conduct usability tests with chess enthusiasts to refine the interface.
-- Test game-saving features to confirm saved states match live games.
+- The developers should conduct usability tests with chess enthusiasts to refine the interface.
+- The developers should test game-saving features to confirm saved states match live games.
 
 ## 9. Use Case Diagramm
 ![Alt text](use_case_diagramm_02122024.png)
