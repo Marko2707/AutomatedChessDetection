@@ -3,6 +3,7 @@ A Python-based app for chessboard recognition and next-move suggestions utilizin
 
 ## Important Links
 Database: https://app.roboflow.com/marko-stankovic-ozole/detection-of-chess-pieces-udbct 
+
 ComputerVision Attempt (Piece Detection and Failed Board Detection): https://colab.research.google.com/drive/1k1ngCEkTUU5b21SOuBKnf2BZ-Dp8Otdg?usp=sharing
 
 ## Team and Responsibilities  
