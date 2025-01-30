@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'board_editor_screen.dart';
 import 'camera_screen.dart';
 import 'upload_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
+import 'board_editor_screen.dart'; // Importiere die EditorPage
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -71,6 +73,32 @@ class HomeScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   _showImagePickerDialog(context);
+                },
+              ),
+              SizedBox(height: 20), // Abstand zwischen den Buttons
+              ElevatedButton.icon(
+                icon: Icon(Icons.analytics, size: 30),
+                label: Text(
+                  'Analysis Board',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 10,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditorPage(
+                        title: 'Analysis Board',
+                        startFEN: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+                      ),
+                    ),
+                  );
                 },
               ),
             ],

@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
+import 'board_editor_screen.dart';
+
 class CameraScreen extends StatefulWidget {
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -50,6 +52,7 @@ class _CameraScreenState extends State<CameraScreen> {
           final image = await _controller!.takePicture();
           // Process the image here
           Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => EditorPage(title: 'Analysis Board', startFEN: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',)));
         },
         child: Icon(Icons.camera),
       ),

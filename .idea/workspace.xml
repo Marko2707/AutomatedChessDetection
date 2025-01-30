@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23f61c18-6c45-4811-ae2f-db68aa191cf6" name="Changes" comment="move flutter app to new directory, basic camera support">
-      <change afterPath="$PROJECT_DIR$/app/lib/models/chess_board.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/models/custom_button.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/board_editor_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/camera_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/history_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/home_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/settings_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/screens/upload_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/utils/fen_generator.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/utils/image_processing.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/widgets/chess_board.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/lib/widgets/custom_button.dart" afterDir="false" />
+    <list default="true" id="23f61c18-6c45-4811-ae2f-db68aa191cf6" name="Changes" comment="fresh start - initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/screens/board_editor_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/screens/board_editor_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/screens/camera_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/screens/camera_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/screens/upload_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/screens/upload_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pubspec.yaml" afterDir="false" />
     </list>
@@ -45,6 +37,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "FredStb"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Marko2707/AutomatedChessDetection",
+    "accountId": "b76c3f9b-07c2-415b-9606-9a240f9eb4a0"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -102,10 +106,20 @@
       <option name="presentableId" value="Default" />
       <updated>1734797940963</updated>
     </task>
+    <task id="LOCAL-00001" summary="fresh start - initial commit">
+      <option name="closed" value="true" />
+      <created>1738086315707</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738086315707</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="move flutter app to new directory, basic camera support" />
-    <option name="LAST_COMMIT_MESSAGE" value="move flutter app to new directory, basic camera support" />
+    <MESSAGE value="fresh start - initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fresh start - initial commit" />
   </component>
 </project>
