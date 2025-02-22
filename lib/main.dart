@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:path/path.dart' as path;
+import 'splash_screen.dart';
 
 List<CameraDescription>? cameras;
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashScreen(),//home: HomePage(),
     );
   }
 }
@@ -32,7 +33,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GUI Demo'),
+        title: const Text('AI Detected Chessboard'),
       ),
       body: Stack(
         children: [
@@ -97,7 +98,7 @@ class HomePage extends StatelessWidget {
 
                 if (image != null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('已选择图片: ${image.path}')),
+                    SnackBar(content: Text('Select Picture From: ${image.path}')),
                   );
                 }
               },
@@ -147,34 +148,35 @@ Future<void> _requestPermissions() async {
 // 拍照并保存到相册
 Future<void> _takePicture() async {
   try {
-    await _controller!.initialize();
+    if (!_controller!.value.isInitialized) return;
 
-    // 请求权限
-    await _requestPermissions();
+    // 拍照
+    XFile picture = await _controller!.takePicture();
 
-    // 获取 DCIM/Camera 目录（系统相册目录）
-    final String dirPath = '/storage/emulated/0/DCIM/Camera';
-    await Directory(dirPath).create(recursive: true);
+    // 获取私有存储目录（根据 Android 和 iOS 自动选择）
+    Directory appDir = await getApplicationDocumentsDirectory();
+    String saveDir = path.join(appDir.path, "chess_images");
 
-    // 设置图片路径
-    final String imagePath = '$dirPath/${DateTime.now().millisecondsSinceEpoch}.jpg';
+    // 创建 `chess_images` 目录
+    await Directory(saveDir).create(recursive: true);
 
-    // 拍照并保存
-    await _controller!.takePicture().then((file) {
-      File(file.path).copy(imagePath);
-    });
+    // 目标路径
+    String targetPath = path.join(saveDir, "chess_${DateTime.now().millisecondsSinceEpoch}.jpg");
 
-    // 通知系统刷新相册
-    final result = await Process.run('am', ['broadcast', '-a', 'android.intent.action.MEDIA_SCANNER_SCAN_FILE', '-d', 'file://$imagePath']);
-    print(result.stdout);
+    // 移动图片到目标目录
+    File savedImage = await File(picture.path).copy(targetPath);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('照片已保存到: $imagePath')),
+      SnackBar(content: Text('Save Image: ${savedImage.path}')),
     );
+
+    print("Image Path: ${savedImage.path}");
+
   } catch (e) {
-    print(e);
+    print("Shoot Error: $e");
   }
 }
+
 
 
   @override
