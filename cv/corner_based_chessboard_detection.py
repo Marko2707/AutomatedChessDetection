@@ -5,50 +5,60 @@ import cv2
 import numpy as np
 
 # TODO: Use the correct corners
-# TODO: Improve corner selection (stop after 4 and make it usable for phones)
 # TODO: Make sure the user picks A1 or alternatively automate it
 
 # Change filepath to the image you want to transform and get the squares
 image_path = "C:/Users/marko/Downloads/test.png/"
 
-def mark_points(image_path):
-    """
-    Opens the image and lets the user select the corners.
-    
-    :param image_path: path to the image
-    :return: list of marked points as coordinates
-    """
-    # Load the image
-    img = mpimg.imread(image_path)
 
-    # Initialize list for points
-    points = []
+import cv2
+import numpy as np
 
-    # Callback function for mouse click
-    def onclick(event):
-        # Only store on left-click
-        if event.xdata and event.ydata:
-            points.append((int(event.xdata), int(event.ydata)))
-            print(f"Point added: {int(event.xdata)}, {int(event.ydata)}")
+class DraggableCorners:
+    def __init__(self, image_path):
+        self.image = cv2.imread(image_path)
+        self.clone = self.image.copy()
+        h, w, _ = self.image.shape
+        self.corners = np.array([[50, 50], [w - 50, 50], [w - 50, h - 50], [50, h - 50]], dtype=int)
+        self.selected_corner = -1
+        self.window_name = "Adjust Corners"
+        cv2.namedWindow(self.window_name)
+        cv2.setMouseCallback(self.window_name, self.mouse_events)
 
-    # Display the image
-    fig, ax = plt.subplots()
-    ax.imshow(img)
-    plt.title("Click on points and close the window when done.")
-    
-    # Connect mouse event
-    cid = fig.canvas.mpl_connect('button_press_event', onclick)
-    
-    plt.show()
-    # Disconnect event
-    fig.canvas.mpl_disconnect(cid)
+    def mouse_events(self, event, x, y, flags, param):
+        if event == cv2.EVENT_LBUTTONDOWN:
+            for i, (px, py) in enumerate(self.corners):
+                if abs(x - px) < 10 and abs(y - py) < 10:
+                    self.selected_corner = i
+                    break
+        elif event == cv2.EVENT_MOUSEMOVE and self.selected_corner != -1:
+            self.corners[self.selected_corner] = (x, y)
+        elif event == cv2.EVENT_LBUTTONUP:
+            self.selected_corner = -1
 
-    print("Marked points:", points)
-    return points
+    def run(self):
+        while True:
+            temp_image = self.clone.copy()
+            for i in range(4):
+                cv2.line(temp_image, tuple(self.corners[i]), tuple(self.corners[(i + 1) % 4]), (0, 255, 0), 2)
+                cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)
 
-# Example call
-points = mark_points(image_path)
-print("Final coordinates:", points)
+            cv2.imshow(self.window_name, temp_image)
+            key = cv2.waitKey(1) & 0xFF
+            if key == 27:  # Escape key to exit
+                break
+            elif key == 13 or key == 10:  # Enter or Return key to confirm selection
+                break
+
+        cv2.destroyAllWindows()
+        return self.corners.tolist()
+
+# Example usage
+drag_corners = DraggableCorners(image_path)
+corners = drag_corners.run()
+print("Final corners:", corners)
+
+
 
 
 def draw_chessboard_on_original(image_path, corners):
@@ -117,9 +127,7 @@ def draw_chessboard_on_original(image_path, corners):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-# Example call with marked corners
-print("Final coordinates:", points)
-draw_chessboard_on_original(image_path, points)
+draw_chessboard_on_original(image_path, corners )
 
 def get_square_corners_on_original(image_path, corners):
     """
@@ -207,7 +215,7 @@ def draw_squares_on_image(image_path, fields_with_corners):
     cv2.destroyAllWindows()
 
 
-fields_with_corners = get_square_corners_on_original(image_path, points)
+fields_with_corners = get_square_corners_on_original(image_path, corners)
 # Print fields and their corners
 for field, corners in fields_with_corners:
     print(f"Field {field}: {corners}")
