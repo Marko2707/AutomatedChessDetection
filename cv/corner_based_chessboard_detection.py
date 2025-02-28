@@ -41,9 +41,15 @@ class DraggableCorners:
                 if i == 3:  # Only label the first corner as "A1"
                     cv2.putText(temp_image, "A1", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
-                if i == 1:  # Only label the first corner as "A1"
+                elif i == 1:  
                     cv2.putText(temp_image, "H8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
+                elif i == 0:  
+                    cv2.putText(temp_image, "H1", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
+                elif i == 2:  
+                    cv2.putText(temp_image, "A8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label               
                 #cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)
 
             cv2.imshow(self.window_name, temp_image)
@@ -247,5 +253,4 @@ def draw_labeled_squares(image_path, fields_with_corners):
 
 # Call function
 draw_labeled_squares(image_path, fields_with_corners)
-
 
