@@ -4,15 +4,9 @@ import matplotlib.image as mpimg
 import cv2
 import numpy as np
 
-# TODO: Use the correct corners
-# TODO: Make sure the user picks A1 or alternatively automate it
 
 # Change filepath to the image you want to transform and get the squares
 image_path = "C:/Users/marko/Downloads/test.png/"
-
-
-import cv2
-import numpy as np
 
 class DraggableCorners:
     def __init__(self, image_path):
@@ -41,7 +35,16 @@ class DraggableCorners:
             temp_image = self.clone.copy()
             for i in range(4):
                 cv2.line(temp_image, tuple(self.corners[i]), tuple(self.corners[(i + 1) % 4]), (0, 255, 0), 2)
-                cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)
+                
+                cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)  # Red dot
+
+                if i == 3:  # Only label the first corner as "A1"
+                    cv2.putText(temp_image, "A1", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
+                if i == 1:  # Only label the first corner as "A1"
+                    cv2.putText(temp_image, "H8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
+                #cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)
 
             cv2.imshow(self.window_name, temp_image)
             key = cv2.waitKey(1) & 0xFF
@@ -222,3 +225,27 @@ for field, corners in fields_with_corners:
 
 # Draw fields on the original image
 draw_squares_on_image(image_path, fields_with_corners)
+
+def draw_labeled_squares(image_path, fields_with_corners):
+    # Load the image
+    image = cv2.imread(image_path)
+
+    for field, corners in fields_with_corners:
+        # Compute center of the square
+        x_center = int(sum([c[0] for c in corners]) / 4)
+        y_center = int(sum([c[1] for c in corners]) / 4)
+
+        # Draw label
+        cv2.putText(image, str(field), (x_center, y_center), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)
+
+    # Save or display the image
+    cv2.imwrite("labeled_chessboard.jpg", image)
+    cv2.imshow("Labeled Chessboard", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+# Call function
+draw_labeled_squares(image_path, fields_with_corners)
+
+
