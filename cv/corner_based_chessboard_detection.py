@@ -6,7 +6,8 @@ import numpy as np
 
 
 # Change filepath to the image you want to transform and get the squares
-image_path = "C:/Users/marko/Downloads/test.png/"
+#image_path = "C:/Users/marko/Downloads/test.png/"
+image_path = "C:/Users/marko/Downloads/chess_01.jpg/"
 
 class DraggableCorners:
     def __init__(self, image_path):
@@ -45,10 +46,10 @@ class DraggableCorners:
                     cv2.putText(temp_image, "H8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
                 elif i == 0:  
-                    cv2.putText(temp_image, "H1", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                    cv2.putText(temp_image, "A8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label
                 elif i == 2:  
-                    cv2.putText(temp_image, "A8", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
+                    cv2.putText(temp_image, "H1", (self.corners[i][0] + 10, self.corners[i][1] - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)  # Green label               
                 #cv2.circle(temp_image, tuple(self.corners[i]), 5, (0, 0, 255), -1)
 
@@ -229,7 +230,15 @@ fields_with_corners = get_square_corners_on_original(image_path, corners)
 for field, corners in fields_with_corners:
     print(f"Field {field}: {corners}")
 
+filepath = "C:/Users/marko/Downloads/corners.txt/"
+# Save data to a text file
+with open(filepath, 'w') as file:
+    for field, corners in fields_with_corners:
+        # Format the corner data for easy reading
+        corners_str = ', '.join([f"({corner[0]:.6f}, {corner[1]:.6f})" for corner in corners])
+        file.write(f"Field {field}: [{corners_str}]\n")
 # Draw fields on the original image
+
 draw_squares_on_image(image_path, fields_with_corners)
 
 def draw_labeled_squares(image_path, fields_with_corners):
