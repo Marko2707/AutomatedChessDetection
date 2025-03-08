@@ -1,4 +1,4 @@
-#Outdated! - The newest Version of this project: https://github.com/Marko2707/chess_app_kivy
+# Outdated! - The newest Version of this project: https://github.com/Marko2707/chess_app_kivy
 # AutomatedChessDetection
 A Python-based app for chessboard recognition and next-move suggestions utilizing AI.
 
